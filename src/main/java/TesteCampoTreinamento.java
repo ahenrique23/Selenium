@@ -9,17 +9,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.*;
 
+
 public class TesteCampoTreinamento {
 	
 	private WebDriver driver;
 	private DSL dsl;
-
+	private CampoTreinamentoPage page;
+	
 	@Before
 	public void inicializa() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);		
+		dsl = new DSL(driver);
+		page = new CampoTreinamentoPage(driver);
 	}
 	
 	@After
@@ -29,16 +32,16 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void testeTextField(){
-		dsl.escrever("elementosForm:nome", "Teste de escrita");
+		page.setNome("Teste de escrita");
 		Assert.assertEquals("Teste de escrita", dsl.obterValorCampo("elementosForm:nome"));
 	}
 	
 	@Test
 	public void testTextFieldDuplo(){
-		dsl.escrever("elementosForm:nome", "Wagner");
-		Assert.assertEquals("Wagner", dsl.obterValorCampo("elementosForm:nome"));
-		dsl.escrever("elementosForm:nome", "Aquino");
-		Assert.assertEquals("Aquino", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Ailton");
+		Assert.assertEquals("Ailton", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Gomes");
+		Assert.assertEquals("Gomes", dsl.obterValorCampo("elementosForm:nome"));
 	}
 	
 	@Test
