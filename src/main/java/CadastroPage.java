@@ -1,11 +1,11 @@
 import org.openqa.selenium.WebDriver;
 
+public class CadastroPage {
 
-public class CampoTreinamentoPage {
-
+	
 	private DSL dsl;	
 
-	public CampoTreinamentoPage(WebDriver driver){
+	public CadastroPage(WebDriver driver){
 		dsl = new DSL(driver);
 	}
 	
@@ -15,18 +15,6 @@ public class CampoTreinamentoPage {
 	
 	public void setSobrenome(String sobrenome) {
 		dsl.escrever("elementosForm:sobrenome", sobrenome);
-	}
-	
-	public void setSugestoes(String sugestoes) {
-		dsl.escrever("elementosForm:sugestoes", sugestoes);
-	}
-	
-	public boolean obterRadioMarcadoMasculino() { 
-		return dsl.isRadioMarcado("elementosForm:sexo:0");
-	}
-	
-	public boolean obterRadioMarcadoComidaPizza() { 
-		return dsl.isCheckMarcado("elementosForm:comidaFavorita:2");
 	}
 	
 	public void setSexoMasculino() {
@@ -65,7 +53,7 @@ public class CampoTreinamentoPage {
 	}
 	
 	public String obterNomeCadastro() {
-		return dsl.obterValorCampo("elementosForm:nome");
+		return dsl.obterTexto("descNome");
 	}
 	
 	public String obterSobrenomeCadastro() {
@@ -92,11 +80,7 @@ public class CampoTreinamentoPage {
 		return dsl.alertaObterTextoEAceita();
 	}
 	
-	public String obterTextoSugestoes() {
-		return dsl.obterValorCampo("elementosForm:sugestoes");
-	}
-			
-		
-		
+	
+	
+	
 }
-

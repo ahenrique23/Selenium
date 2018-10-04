@@ -9,7 +9,7 @@ public class TesteCadastro {
 	
 	private WebDriver driver;
 	private DSL dsl;
-	private CampoTreinamentoPage page;
+	private CadastroPage page;
 	
 	@Before
 	public void inicializa() {
@@ -17,7 +17,7 @@ public class TesteCadastro {
 		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
 		dsl = new DSL(driver);
-		page = new CampoTreinamentoPage(driver); 
+		page = new CadastroPage(driver); 
 	}
 	
 	@After

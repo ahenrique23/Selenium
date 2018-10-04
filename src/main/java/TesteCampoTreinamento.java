@@ -33,39 +33,39 @@ public class TesteCampoTreinamento {
 	@Test
 	public void testeTextField(){
 		page.setNome("Teste de escrita");
-		Assert.assertEquals("Teste de escrita", dsl.obterValorCampo("elementosForm:nome"));
+		Assert.assertEquals("Teste de escrita", page.obterNomeCadastro());
 	}
 	
 	@Test
 	public void testTextFieldDuplo(){
-		dsl.escrever("elementosForm:nome", "Ailton");
-		Assert.assertEquals("Ailton", dsl.obterValorCampo("elementosForm:nome"));
-		dsl.escrever("elementosForm:nome", "Gomes");
-		Assert.assertEquals("Gomes", dsl.obterValorCampo("elementosForm:nome"));
+		page.setNome("Ailton");
+		Assert.assertEquals("Ailton", page.obterNomeCadastro());
+		page.setNome("Gomes");
+		Assert.assertEquals("Gomes", page.obterNomeCadastro());
 	}
 	
 	@Test
 	public void deveIntegarirComTextArea(){
-		dsl.escrever("elementosForm:sugestoes", "teste\n\naasldjdlks\nUltima linha");
-		Assert.assertEquals("teste\n\naasldjdlks\nUltima linha", dsl.obterValorCampo("elementosForm:sugestoes"));
+		page.setSugestoes("testando");
+		Assert.assertEquals("testando", page.obterTextoSugestoes());
 	}
 	
 	@Test
 	public void deveIntegarirComRadioButton(){
-		dsl.clicarRadio("elementosForm:sexo:0");
-		Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0"));
+		page.setSexoMasculino();
+		Assert.assertTrue(page.obterRadioMarcadoMasculino());
 	}
 	
 	@Test
 	public void deveIntegarirComCheckbox(){
-		dsl.clicarCheck("elementosForm:comidaFavorita:2");
-		Assert.assertTrue(dsl.isCheckMarcado("elementosForm:comidaFavorita:2"));
+		page.setComidaFavoritaPizza();
+		Assert.assertTrue(page.obterRadioMarcadoComidaPizza());
 	}
 	
 	@Test
 	public void deveIntegarirComCombo(){
-		dsl.selecionarCombo("elementosForm:escolaridade", "2o grau completo");
-		Assert.assertEquals("2o grau completo", dsl.obterValorCombo("elementosForm:escolaridade"));
+		page.setEscolaridade("2o grau completo");
+		Assert.assertEquals("Escolaridade: 2o grau completo", page.obterDescEscolardade());
 	}
 	
 	@Test
