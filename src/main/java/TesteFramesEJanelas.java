@@ -3,8 +3,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class TesteFramesEJanelas {
@@ -13,11 +15,11 @@ public class TesteFramesEJanelas {
 	private DSL dsl;
 
 	@Before
-	public void inicializa() {
+	public void inicializa(){
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);		
+		dsl = new DSL(driver);
 	}
 	
 	@After

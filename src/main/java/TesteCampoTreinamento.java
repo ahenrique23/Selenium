@@ -6,23 +6,22 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.*;
-
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TesteCampoTreinamento {
 	
 	private WebDriver driver;
 	private DSL dsl;
-	private CampoTreinamentoPage page;
-	
+
 	@Before
-	public void inicializa() {
+	public void inicializa(){
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
 		dsl = new DSL(driver);
-		page = new CampoTreinamentoPage(driver);
 	}
 	
 	@After
@@ -32,40 +31,40 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void testeTextField(){
-		page.setNome("Teste de escrita");
-		Assert.assertEquals("Teste de escrita", page.obterNomeCadastro());
+		dsl.escrever("elementosForm:nome", "Teste de escrita");
+		Assert.assertEquals("Teste de escrita", dsl.obterValorCampo("elementosForm:nome"));
 	}
 	
 	@Test
 	public void testTextFieldDuplo(){
-		page.setNome("Ailton");
-		Assert.assertEquals("Ailton", page.obterNomeCadastro());
-		page.setNome("Gomes");
-		Assert.assertEquals("Gomes", page.obterNomeCadastro());
+		dsl.escrever("elementosForm:nome", "Wagner");
+		Assert.assertEquals("Wagner", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Aquino");
+		Assert.assertEquals("Aquino", dsl.obterValorCampo("elementosForm:nome"));
 	}
 	
 	@Test
 	public void deveIntegarirComTextArea(){
-		page.setSugestoes("testando");
-		Assert.assertEquals("testando", page.obterTextoSugestoes());
+		dsl.escrever("elementosForm:sugestoes", "teste\n\naasldjdlks\nUltima linha");
+		Assert.assertEquals("teste\n\naasldjdlks\nUltima linha", dsl.obterValorCampo("elementosForm:sugestoes"));
 	}
 	
 	@Test
 	public void deveIntegarirComRadioButton(){
-		page.setSexoMasculino();
-		Assert.assertTrue(page.obterRadioMarcadoMasculino());
+		dsl.clicarRadio("elementosForm:sexo:0");
+		Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0"));
 	}
 	
 	@Test
 	public void deveIntegarirComCheckbox(){
-		page.setComidaFavoritaPizza();
-		Assert.assertTrue(page.obterRadioMarcadoComidaPizza());
+		dsl.clicarCheck("elementosForm:comidaFavorita:2");
+		Assert.assertTrue(dsl.isCheckMarcado("elementosForm:comidaFavorita:2"));
 	}
 	
 	@Test
 	public void deveIntegarirComCombo(){
-		page.setEscolaridade("2o grau completo");
-		Assert.assertEquals("Escolaridade: 2o grau completo", page.obterDescEscolardade());
+		dsl.selecionarCombo("elementosForm:escolaridade", "2o grau completo");
+		Assert.assertEquals("2o grau completo", dsl.obterValorCombo("elementosForm:escolaridade"));
 	}
 	
 	@Test

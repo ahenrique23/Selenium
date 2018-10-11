@@ -1,15 +1,14 @@
 import org.openqa.selenium.WebDriver;
 
-
 public class CampoTreinamentoPage {
-
-	private DSL dsl;	
-
-	public CampoTreinamentoPage(WebDriver driver){
+	
+	private DSL dsl;
+	
+	public CampoTreinamentoPage(WebDriver driver) {
 		dsl = new DSL(driver);
 	}
-	
-	public void setNome(String nome){
+
+	public void setNome(String nome) {
 		dsl.escrever("elementosForm:nome", nome);
 	}
 	
@@ -17,86 +16,64 @@ public class CampoTreinamentoPage {
 		dsl.escrever("elementosForm:sobrenome", sobrenome);
 	}
 	
-	public void setSugestoes(String sugestoes) {
-		dsl.escrever("elementosForm:sugestoes", sugestoes);
-	}
-	
-	public boolean obterRadioMarcadoMasculino() { 
-		return dsl.isRadioMarcado("elementosForm:sexo:0");
-	}
-	
-	public boolean obterRadioMarcadoComidaPizza() { 
-		return dsl.isCheckMarcado("elementosForm:comidaFavorita:2");
-	}
-	
-	public void setSexoMasculino() {
+	public void setSexoMasculino(){
 		dsl.clicarRadio("elementosForm:sexo:0");
 	}
-	public void setSexoFeminino() {
+	
+	public void setSexoFeminino(){
 		dsl.clicarRadio("elementosForm:sexo:1");
 	}
 	
-	public void setComidaFavoritaPizza() {
-		dsl.clicarRadio("elementosForm:comidaFavorita:2");
-	}
-	
-	public void setComidaFavoritaCarne() {
+	public void setComidaCarne(){
 		dsl.clicarRadio("elementosForm:comidaFavorita:0");
 	}
 	
-	public void setComidaFavoritaVegetariano() {
+	public void setComidaPizza(){
+		dsl.clicarRadio("elementosForm:comidaFavorita:2");
+	}
+	
+	public void setComidaVegetariano(){
 		dsl.clicarRadio("elementosForm:comidaFavorita:3");
 	}
+	
 	public void setEscolaridade(String valor) {
 		dsl.selecionarCombo("elementosForm:escolaridade", valor);
 	}
 	
 	public void setEsporte(String... valores) {
-		for(String valor : valores)
-		dsl.selecionarCombo("elementosForm:esportes", valor);
+		for(String valor: valores)
+			dsl.selecionarCombo("elementosForm:esportes", valor);
 	}
 	
-	public void cadastrar() {
+	public void cadastrar(){
 		dsl.clicarBotao("elementosForm:cadastrar");
 	}
 	
-	public String obterResultadoCadastro() {
-		return  dsl.obterTexto("resultado");
+	public String obterResultadoCadastro(){
+		return dsl.obterTexto("resultado");
 	}
 	
-	public String obterNomeCadastro() {
-		return dsl.obterValorCampo("elementosForm:nome");
+	public String obterNomeCadastro(){
+		return dsl.obterTexto("descNome");
 	}
 	
-	public String obterSobrenomeCadastro() {
+	public String obterSobrenomeCadastro(){
 		return dsl.obterTexto("descSobrenome");
 	}
 	
-	public String obterDescSexoCadastro() {
+	public String obterSexoCadastro(){
 		return dsl.obterTexto("descSexo");
 	}
 	
-	public String obterDescComida() {
+	public String obterComidaCadastro(){
 		return dsl.obterTexto("descComida");
 	}
 	
-	public String obterDescEscolardade() {
+	public String obterEscolaridadeCadastro(){
 		return dsl.obterTexto("descEscolaridade");
 	}
 	
-	public String obterDescEsporte() {
+	public String obterEsportesCadastro(){
 		return dsl.obterTexto("descEsportes");
 	}
-	
-	public String alertObterTextoAceita() {
-		return dsl.alertaObterTextoEAceita();
-	}
-	
-	public String obterTextoSugestoes() {
-		return dsl.obterValorCampo("elementosForm:sugestoes");
-	}
-			
-		
-		
 }
-
