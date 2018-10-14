@@ -27,8 +27,8 @@ public class TesteCadastro {
 
 	@Test
 	public void deveRealizarCadastroComSucesso(){
-		page.setNome("Wagner");
-		page.setSobrenome("Costa");
+		page.setNome("Ailton");
+		page.setSobrenome("Gomes");
 		page.setSexoMasculino();
 		page.setComidaPizza();
 		page.setEscolaridade("Mestrado");
@@ -36,8 +36,8 @@ public class TesteCadastro {
 		page.cadastrar();
 		
 		Assert.assertTrue(page.obterResultadoCadastro().startsWith("Cadastrado!"));
-		Assert.assertTrue(page.obterNomeCadastro().endsWith("Wagner"));
-		Assert.assertEquals("Sobrenome: Costa", page.obterSobrenomeCadastro());
+		Assert.assertTrue(page.obterNomeCadastro().endsWith("Ailton"));
+		Assert.assertEquals("Sobrenome: Gomes", page.obterSobrenomeCadastro());
 		Assert.assertEquals("Sexo: Masculino", page.obterSexoCadastro());
 		Assert.assertEquals("Comida: Pizza", page.obterComidaCadastro());
 		Assert.assertEquals("Escolaridade: mestrado", page.obterEscolaridadeCadastro());

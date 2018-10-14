@@ -37,10 +37,10 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void testTextFieldDuplo(){
-		dsl.escrever("elementosForm:nome", "Wagner");
-		Assert.assertEquals("Wagner", dsl.obterValorCampo("elementosForm:nome"));
-		dsl.escrever("elementosForm:nome", "Aquino");
-		Assert.assertEquals("Aquino", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Ailton");
+		Assert.assertEquals("Ailton", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Gomes");
+		Assert.assertEquals("Gomes", dsl.obterValorCampo("elementosForm:nome"));
 	}
 	
 	@Test

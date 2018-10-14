@@ -39,6 +39,14 @@ public class TesteFramesEJanelas {
 	}
 	
 	@Test
+	public void deveInteragirComFrameEscondido(){
+		dsl.entrarFrame("frame2");
+		dsl.clicarBotao("frameButton");
+		String msg = dsl.alertaObterTextoEAceita();
+		Assert.assertEquals("Frame OK!", msg);
+	}
+	
+	@Test
 	public void deveInteragirComJanelas(){
 		dsl.clicarBotao("buttonPopUpEasy");
 		dsl.trocarJanela("Popup");

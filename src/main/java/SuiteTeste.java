@@ -6,7 +6,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	TesteCadastro.class,
 	TesteRegrasCadastro.class,
-	TesteCampoTreinamento.class
+	TesteCampoTreinamento.class,
+	TesteAlert.class,
+	TesteFramesEJanelas.class	
 })
 public class SuiteTeste {
 
